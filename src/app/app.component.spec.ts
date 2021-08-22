@@ -10,6 +10,10 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
+  afterEach(() => {
+    localStorage.clear();
+  })
+
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
@@ -28,4 +32,20 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('angular-testing-demo app is running!');
   });
+
+
+  it('addition of two numbers', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    expect(app.sum(23, 12)).toEqual(35);
+  })
+
+  it('addition of two numbers 2', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    expect(app.sum(23, 12)).toBeLessThan(100);
+  })
+
 });
